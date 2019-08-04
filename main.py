@@ -36,11 +36,12 @@ if __name__ == '__main__':
     # Init the pygame mixer
     pygame.mixer.init()
     args = parse_args()
-    file_list = gen_file_list(args.directory)
     with Board() as board:
         board.led.state = Led.OFF
         while True:
+            file_list = gen_file_list(args.directory)
             board.button.wait_for_press()
             board.led.state = Led.ON
             play_random_sound(file_list)
             board.led.state = Led.OFF
+
