@@ -7,8 +7,7 @@ from random import choice
 from aiy.board import Board, Led
 
 
-# Init the pygame mixer
-pygame.mixer.init()
+
 
 
 def play_sound(filename, volume=1.0):
@@ -34,6 +33,8 @@ def parse_args():
 
 
 if __name__ == '__main__':
+    # Init the pygame mixer
+    pygame.mixer.init()
     args = parse_args()
     file_list = gen_file_list(args.directory)
     with Board() as board:
