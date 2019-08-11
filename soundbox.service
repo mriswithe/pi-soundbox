@@ -1,0 +1,9 @@
+[Unit]
+Description=Soundbox for RPi
+
+[Service]
+Type=simple
+ExecStart=/opt/soundbox/venv/bin/python /opt/soundbox/main.py /opt/soundbox/sounds
+
+[Install]
+WantedBy=multi-user.target
