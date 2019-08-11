@@ -12,7 +12,7 @@ This is made to assist in an easy setup of a Raspberry Pi into a little random s
 
 ## Usage Overview
 1. Follow the base instructions for installing and configuring the AIY Voice Kit with your RPi
-1. Compile and install Python 3.7 see [compile python][##Compile-Python]
+1. Compile and install Python 3.7 see [compile python][#Compile-Python]
 1.
 1. Clone the repo into /opt/soundbox
 ```bash
@@ -23,5 +23,6 @@ sudo systemctl enable soundbox.service
  
  
  
-##Compile Python 
+## Compile Python
+.
 
