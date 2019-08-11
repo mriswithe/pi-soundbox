@@ -10,7 +10,7 @@ import os
 from aiy.board import Board, Led
 
 SHUTDOWN_FILENAME = 'shutdown.ogg'
-STARTUP_FILENAME = 'startup.ogg'
+STARTUP_FILENAME = None
 RUNPATH = os.path.dirname(os.path.realpath(__file__))
 SHUTDOWN_PATH = RUNPATH + '/' + SHUTDOWN_FILENAME
 STARTUP_PATH = RUNPATH + '/' + STARTUP_FILENAME
@@ -28,10 +28,11 @@ def prep_shutdown_sound():
     SHUTDOWN_DUR = SHUTDOWN_SOUND.get_length()
 
 def prep_startup_sound():
-    global STARTUP_SOUND
-    global STARTUP_DUR
-    STARTUP_SOUND = Sound(STARTUP_PATH)
-    STARTUP_DUR = STARTUP_SOUND.get_length()
+    if STARTUP_FILENAME:
+        global STARTUP_SOUND
+        global STARTUP_DUR
+        STARTUP_SOUND = Sound(STARTUP_PATH)
+        STARTUP_DUR = STARTUP_SOUND.get_length()
 
 def play_sound(sound_file, volume=1.0):
     dur = sound_file.get_length()
@@ -57,7 +58,8 @@ def arg_parse_setup():
 
 
 def signal_ready(board):
-    play_sound(STARTUP_SOUND)
+    if STARTUP_FILENAME:
+        play_sound(STARTUP_SOUND)
     for i in range(5):
         board.led.state = Led.ON
         time.sleep(.2)
@@ -73,7 +75,6 @@ if __name__ == '__main__':
     args = arg_parse_setup()
     with Board() as board:
         signal_ready(board)
-
         board.led.state = Led.OFF
         while True:
             file_list = gen_file_list(args.directory)
