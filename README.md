@@ -23,7 +23,10 @@ This is made to assist in an easy setup of a Raspberry Pi into a little random s
     ```bash
    python3.7 -m venv /opt/soundbox/venv
    source /opt/soundbox/venv/bin/activate
-   pip install -r /opt/soundbox/requirements.txt 
+   pip install -r /opt/soundbox/requirements.txt
+   # Need to clone the aiyprojects repo to install it
+   git clone https://github.com/google/aiyprojects-raspbian.git /tmp/aiyprojects
+   pip install /tmp/aiyprojects/src/
    ``` 
 1. Put sounds into the /opt/soundbox/sounds directory, use SCP or something
 1. Restart the Raspberry Pi. 
